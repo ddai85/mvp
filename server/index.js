@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./database.js')
 const app = express();
 
 app.use(express.static('client'));
@@ -12,8 +13,36 @@ app.use(bodyParser.json());
 // });
 
 app.post('/makebuffer', (req, res) => {
-  console.log(req.body);
-  res.status(200).send();
+
+  var solutionObj = {
+  	name: req.body.name,
+  	user: req.body.user
+  }
+
+  db.Solution.findOneAndUpdate({name: req.body.name}, solutionObj, {upsert: true, returnNewDocument: true})
+    .then((solution) => {
+    	var component1 = {
+        name: req.body.chem1,
+        amount: req.body.chem1Amt,
+        bufferId: solution._id
+      }
+    	return db.Component.create(component1);
+    })
+    .then((component) => {
+		  var component2 = {
+		    name: req.body.chem2,
+		    amount: req.body.chem2Amt,
+		    bufferId: component.bufferId
+		  }
+			return db.Component.create(component2);
+		})
+		.then((component) => {
+	  	console.log('SOMEHOW SUCCESSSS');
+			res.status(200).send();
+		})
+    .catch((err) => {
+    	console.log('there was an error inserting into DB', err)
+    })
 });
 
 app.listen(3000, function() {
