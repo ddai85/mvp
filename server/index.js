@@ -13,13 +13,11 @@ app.use(bodyParser.json());
 // });
 
 app.post('/makebuffer', (req, res) => {
-
   var solutionObj = {
   	name: req.body.name,
   	user: req.body.user
   }
-
-  db.Solution.findOneAndUpdate({name: req.body.name}, solutionObj, {upsert: true, returnNewDocument: true})
+  db.Solution.findOneAndUpdate({name: req.body.name}, solutionObj, {upsert: true, new: true})
     .then((solution) => {
     	var component1 = {
         name: req.body.chem1,
@@ -41,9 +39,22 @@ app.post('/makebuffer', (req, res) => {
 			res.status(200).send();
 		})
     .catch((err) => {
-    	console.log('there was an error inserting into DB', err)
+    	console.log('there was an error inserting into DB', err);
     })
 });
+
+
+app.get('/buffers', (req, res) => {
+  db.Solution.find()
+    .then((buffers) => {
+    	console.log('these are all buffers', buffers);
+    	res.status(200).send(buffers);
+    })
+    .catch((err) => {
+    	console.log('there was error GET a buffer', err);
+    })
+});
+
 
 app.listen(3000, function() {
 	console.log('express server up and running');

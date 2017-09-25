@@ -1,4 +1,7 @@
 bufferApp.component('bufferCreator', {
+	bindings: {
+		fetch: '<'
+	},
 	templateUrl: './templates/bufferCreator.html',
 	controller: function bufferCreatorController($http) {
 
@@ -21,6 +24,7 @@ bufferApp.component('bufferCreator', {
       })
       .then((success)=>{
       	console.log('post succeeded', success)
+      	this.fetch();
       }, (error) => {
       	console.log('post failed', error)
       })

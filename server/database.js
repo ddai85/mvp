@@ -12,7 +12,7 @@ var Solution = mongoose.model('Solution', bufferSchema);
 
 var componentSchema = mongoose.Schema({
   name: String,
-  amount: Number,
+  amount: String,
   unit: String,
 	bufferId: String
 })
