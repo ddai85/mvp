@@ -1,0 +1,21 @@
+div.component {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  
+}
+
+div.wide {
+	vertical-align: top;
+	width: 55%;
+	display: inline-block;
+}
+
+div.narrow {
+	width: 40%;
+	display: inline-block;
+}
+
+#submit {
+
+}

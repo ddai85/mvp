@@ -1,0 +1,30 @@
+{
+  "name": "buffer-maker",
+  "version": "1.0.0",
+  "description": "a small app to store buffer components and recall them",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddai85/hrsf81-mvp.git"
+  },
+  "keywords": [
+    "MVP"
+  ],
+  "author": "Daniel Dai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddai85/hrsf81-mvp/issues"
+  },
+  "homepage": "https://github.com/ddai85/hrsf81-mvp#readme"
+}

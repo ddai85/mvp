@@ -1,0 +1,1 @@
+window.bufferApp = angular.module('bufferApp', [])
