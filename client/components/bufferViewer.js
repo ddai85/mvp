@@ -5,8 +5,7 @@ bufferApp.component('bufferViewer', {
 	},
 	templateUrl: './templates/bufferViewer.html',
 	controller: function bufferViewerController() {
-    this.$onInit = function() {
-
-    }
+		this.msds = window.msds;
+		this.url = 'https://www.sciencelab.com/x'
 	}
 });
