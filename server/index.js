@@ -15,7 +15,8 @@ app.use(bodyParser.json());
 app.post('/makebuffer', (req, res) => {
   var solutionObj = {
   	name: req.body[0].name,
-  	user: req.body[0].user
+  	user: req.body[0].user,
+    description: req.body[0].description
   }
   db.Solution.findOneAndUpdate({name: req.body[0].name}, solutionObj, {upsert: true, new: true})
     .then((solution) => {

@@ -11,7 +11,6 @@ bufferApp.component('addChemical', {
     this.amount = '';
 
 	  this.valueChange = function() {
-      console.log(this.chemIndex)
 	    this.updateName(this.name, this.amount, this.index);
 	  }
 
@@ -23,7 +22,6 @@ bufferApp.component('addChemical', {
           source: msdsArr,
           delay: 0,
           minLength: 3
-
         });
       });
     }

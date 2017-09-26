@@ -5,7 +5,7 @@ var db = mongoose.connect('mongodb://localhost/buffer');
 var bufferSchema = mongoose.Schema({
 	name: String,
 	user: String,
-	directions: String
+	description: String
 })
 
 var Solution = mongoose.model('Solution', bufferSchema);

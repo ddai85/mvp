@@ -8,6 +8,7 @@ bufferApp.component('bufferCreator', {
 		this.makeBuffer = {
       name: null,
       user: null,
+      description: null
 		}
 
     this.chemicals = [];
@@ -58,7 +59,6 @@ bufferApp.component('bufferCreator', {
     }
 
     this.updateName = function(name, amount, index) {
-      console.log(name, amount, index)
       this.chemicals[index - 1].name = name;
       this.chemicals[index - 1].amount = amount;
     };

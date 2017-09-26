@@ -5,7 +5,9 @@
     <br>
     <label>Scientist Name</label>
     <input id="user-name" ng-model="$ctrl.makeBuffer.user" type="text" required>
-    <textarea rows="4" cols="40">
+    <br>
+    <label>Detailed instructions...</label>
+    <textarea ng-model="$ctrl.makeBuffer.description" rows="4" cols="40">
     Describe any specific instructions needed to make the buffer...
     </textarea>
     <add-chemical update-name="$ctrl.updateName" chem-index="$ctrl.chemIndex" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
