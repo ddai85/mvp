@@ -5,7 +5,7 @@
     <br>
     <label>Scientist Name</label>
     <input id="user-name" ng-model="$ctrl.makeBuffer.user" type="text" required>
-    <add-chemical chemical="chemical" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
+    <add-chemical update-name="$ctrl.updateName" chem-index="$ctrl.chemIndex" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
     <br>
     <button id="submit" ng-click="$ctrl.onClick()">Submit</button>
     <button id="reset" ng-click="$ctrl.onReset()">Reset</button>

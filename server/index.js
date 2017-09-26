@@ -14,26 +14,20 @@ app.use(bodyParser.json());
 
 app.post('/makebuffer', (req, res) => {
   var solutionObj = {
-  	name: req.body.name,
-  	user: req.body.user
+  	name: req.body[0].name,
+  	user: req.body[0].user
   }
-  db.Solution.findOneAndUpdate({name: req.body.name}, solutionObj, {upsert: true, new: true})
+  db.Solution.findOneAndUpdate({name: req.body[0].name}, solutionObj, {upsert: true, new: true})
     .then((solution) => {
-    	var component1 = {
-        name: req.body.chem1,
-        amount: req.body.chem1Amt,
-        bufferId: solution._id
-      }
-    	return db.Component.create(component1);
+
+      var componentsArr = req.body[1];
+      
+      componentsArr.forEach((component) => {
+        component.bufferId = solution._id;
+      })
+      console.log(componentsArr);
+    	return db.Component.create(componentsArr);
     })
-    .then((component) => {
-		  var component2 = {
-		    name: req.body.chem2,
-		    amount: req.body.chem2Amt,
-		    bufferId: component.bufferId
-		  }
-			return db.Component.create(component2);
-		})
 		.then((component) => {
 	  	console.log('SOMEHOW SUCCESSSS');
 			res.status(200).send();
