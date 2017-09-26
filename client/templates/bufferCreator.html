@@ -7,10 +7,12 @@
     <input id="user-name" ng-model="$ctrl.makeBuffer.user" type="text" required>
     <br>
     <label>Detailed instructions...</label>
+    <br>
     <textarea ng-model="$ctrl.makeBuffer.description" rows="4" cols="40">
     Describe any specific instructions needed to make the buffer...
     </textarea>
-    <add-chemical update-name="$ctrl.updateName" chem-index="$ctrl.chemIndex" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
+    <br>
+    <add-chemical chemical="chemical" update-name="$ctrl.updateName" chem-index="$ctrl.chemIndex" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
     <br>
     <button id="submit" ng-click="$ctrl.onClick()">Submit</button>
     <button id="reset" ng-click="$ctrl.onReset()">Reset</button>

@@ -36,7 +36,15 @@ bufferApp.component('appController', {
       this.fetchBuffers();
     }
 
-    
+    this.appUpdate = function(buffer, components) {
+      this.updateObj = {
+        name: buffer.name,
+        user: buffer.user,
+        description: buffer.description,
+        components: components
+      }
 
-	}
+    }
+    this.appUpdate = this.appUpdate.bind(this);
+  }
 });

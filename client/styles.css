@@ -4,14 +4,14 @@ div, h1 {
 
 div.component {
   border: 1px solid black;
-  padding: 5px;
+  padding: 20px;
   margin: 5px;
   
 }
 
 div.wide {
 	vertical-align: top;
-	width: 55%;
+	width: 25%;
 	display: inline-block;
 }
 
@@ -36,7 +36,8 @@ h1 {
 #flask {
   width: 5%;
   display: inline;
-  margin-right: 50px;
+  padding: 5px;
+
 }
 #addButton {
 	width: 7%;
@@ -51,4 +52,10 @@ ul {
 
 .ui-helper-hidden-accessible { 
 	display:none; 
+}
+
+ h1{
+   position: absolute;
+   top: 20px;
+   left: 120px;
 }

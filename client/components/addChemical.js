@@ -2,13 +2,19 @@ bufferApp.component('addChemical', {
 
   bindings: {
   	chemIndex: '<',
-  	updateName: '<'
+  	updateName: '<',
+    chemical: '<'
   },
   templateUrl: './templates/addChemical.html',
   controller: function () {
   	this.index;
     this.name = '';
     this.amount = '';
+
+    this.$onChanges = function(change) {
+      this.name = change.chemical.currentValue.name;
+      this.amount = change.chemical.currentValue.amount;
+    }
 
 	  this.valueChange = function() {
 	    this.updateName(this.name, this.amount, this.index);

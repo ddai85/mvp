@@ -1,6 +1,7 @@
 bufferApp.component('bufferCreator', {
 	bindings: {
-		fetch: '<'
+		fetch: '<',
+    update: '<'
 	},
 	templateUrl: './templates/bufferCreator.html',
 	controller: function bufferCreatorController($http) {
@@ -10,9 +11,22 @@ bufferApp.component('bufferCreator', {
       user: null,
       description: null
 		}
-
     this.chemicals = [];
     this.chemIndex = 0;
+
+    this.$onChanges = function(change) {
+      if (change.update.currentValue){
+        this.makeBuffer.name = change.update.currentValue.name;
+        this.makeBuffer.user = change.update.currentValue.user;
+        this.makeBuffer.description = change.update.currentValue.description;
+        for (var i in change.update.currentValue.components) {
+          this.chemIndex++;
+          this.chemicals.push(change.update.currentValue.components[i])
+        };
+      }
+    }
+
+
 
     this.bufferData = [this.makeBuffer, this.chemicals];
 
@@ -48,7 +62,6 @@ bufferApp.component('bufferCreator', {
     }
 
     this.onReset = function() {
-      console.log('resetting buffer maker');
       this.makeBuffer = {
         name: null,
         user: null,

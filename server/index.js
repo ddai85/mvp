@@ -18,13 +18,18 @@ app.post('/makebuffer', (req, res) => {
   	user: req.body[0].user,
     description: req.body[0].description
   }
+  var solutionId;
   db.Solution.findOneAndUpdate({name: req.body[0].name}, solutionObj, {upsert: true, new: true})
     .then((solution) => {
+      solutionId = solution._id;
+      return db.Component.find({bufferId: solution._id}).remove();
 
+    })
+    .then(() => {
       var componentsArr = req.body[1];
-      
+      console.log('this is solution id', solutionId)
       componentsArr.forEach((component) => {
-        component.bufferId = solution._id;
+        component.bufferId = solutionId;
       })
       console.log(componentsArr);
     	return db.Component.create(componentsArr);

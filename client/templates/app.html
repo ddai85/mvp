@@ -3,8 +3,8 @@
 		<list-view buffer-click="$ctrl.bufferClick" buffers="$ctrl.buffers"></list-view>
 	</div>
   <div class="narrow">
-		<buffer-creator fetch="$ctrl.fetchBuffers"></buffer-creator>
+		<buffer-creator update="$ctrl.updateObj" fetch="$ctrl.fetchBuffers"></buffer-creator>
 
-		<buffer-viewer current="$ctrl.currentBuffer" current-components="$ctrl.currentComponents"></buffer-viewer>
+		<buffer-viewer app-update="$ctrl.appUpdate" current="$ctrl.currentBuffer" current-components="$ctrl.currentComponents"></buffer-viewer>
 	</div>
 </div>
