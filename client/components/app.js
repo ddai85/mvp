@@ -1,11 +1,10 @@
 bufferApp.component('appController', {
 	templateUrl: './templates/app.html',
 	controller: function appController($http) {
-    this.buffers = [
-      {name: 'tris-base'},
-      {name: 'pH solution'},
-      {name: 'something toxic'}
-    ]
+    this.buffers = [];
+
+    this.currentBuffer;
+    this.currentComponents;
 	
     this.fetchBuffers = function () {
     	$http({
@@ -14,12 +13,25 @@ bufferApp.component('appController', {
     	})
   	  .then((data) => {
         this.buffers = data.data;
-        console.log(data);
   	  }, (err) => {
-        console.log('there was problem with GET request', err);
+        console.log('there was problem with GET buffers request', err);
   	  })
     }
     this.fetchBuffers = this.fetchBuffers.bind(this);
+
+    this.bufferClick = function(e) {
+    	this.currentBuffer = e;
+    	let bufferId = e._id;
+    	$http.get('http://127.0.0.1:3000/buffer?' + bufferId)
+    	  .then((data) => {
+    	  	this.currentComponents = data.data;
+    	  }, (err) => {
+    	  	console.log('there was problem with GET buffer request', err);
+    	  })
+    }
+    this.bufferClick = this.bufferClick.bind(this);
+  
+
     this.$onInit = function () {
       this.fetchBuffers();
     }

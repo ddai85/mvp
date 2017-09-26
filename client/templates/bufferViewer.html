@@ -1,3 +1,21 @@
 <div class="component buffer-viewer">
-<p>clicking on a buffer will display details of how to make it here</p>
+	<p>Buffer Name: {{$ctrl.current.name}}</p>
+	<p>Scientist Name: {{$ctrl.current.user}}</p>
+
+	<table style="width: 70%">
+		<tr>
+			<th>Chemical Name</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>{{$ctrl.currentComponents[0].name}}</td>
+			<td>{{$ctrl.currentComponents[0].amount}}</td>
+		</tr>
+		<tr>
+			<td>{{$ctrl.currentComponents[1].name}}</td>
+			<td>{{$ctrl.currentComponents[1].amount}}</td>
+		</tr>
+	</table>
+
+  <button>Update</button>
 </div>

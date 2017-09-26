@@ -1,3 +1,4 @@
 <div class="component list-view">
-  <list-view-entry buffer="buffer" ng-repeat="buffer in $ctrl.buffers">
+	<p>{{$ctrl.clickHandler}}</p>
+  <list-view-entry ng-click="$ctrl.bufferClick(buffer)" buffer="buffer" ng-repeat="buffer in $ctrl.buffers">
 </div>

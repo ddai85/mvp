@@ -25,6 +25,14 @@ bufferApp.component('bufferCreator', {
       .then((success)=>{
       	console.log('post succeeded', success)
       	this.fetch();
+      	this.makeBuffer = {
+      		name: null,
+		      user: null,
+		      chem1: null,
+		      chem1Amt: null,
+		      chem2: null,
+		      chem2Amt: null
+      	};
       }, (error) => {
       	console.log('post failed', error)
       })

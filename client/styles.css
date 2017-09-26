@@ -16,6 +16,21 @@ div.narrow {
 	display: inline-block;
 }
 
-#submit {
+th, td {
+   border-bottom: 1px solid black;
+   text-align: left;
+}
 
+label {
+	line-height: 200%;
+}
+
+h1 {
+	display: inline;
+
+}
+#flask {
+  width: 5%;
+  display: inline;
+  margin-right: 50px;
 }

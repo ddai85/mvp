@@ -47,11 +47,22 @@ app.post('/makebuffer', (req, res) => {
 app.get('/buffers', (req, res) => {
   db.Solution.find()
     .then((buffers) => {
-    	console.log('these are all buffers', buffers);
     	res.status(200).send(buffers);
     })
     .catch((err) => {
     	console.log('there was error GET a buffer', err);
+    })
+});
+
+
+app.get('/buffer', (req, res) => {
+  let bufferId = req.url.split('?')[1];
+  db.Component.find({bufferId: bufferId})
+    .then((components) => {
+      res.status(200).send(components);
+    })
+    .catch((err) => {
+      console.log('there was error GET components', err);
     })
 });
 
