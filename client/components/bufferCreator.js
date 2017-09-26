@@ -26,14 +26,7 @@ bufferApp.component('bufferCreator', {
       .then((success)=>{
       	console.log('post succeeded', success)
       	this.fetch();
-      	this.makeBuffer = {
-      		name: null,
-		      user: null,
-		      chem1: null,
-		      chem1Amt: null,
-		      chem2: null,
-		      chem2Amt: null
-      	};
+        this.onReset();
       }, (error) => {
       	console.log('post failed', error)
       })
@@ -41,7 +34,6 @@ bufferApp.component('bufferCreator', {
     }
 
     this.addRow = function() {
-    
       let chemObj = {
         name: null,
         amount: null
@@ -51,8 +43,14 @@ bufferApp.component('bufferCreator', {
     }
 
     this.onReset = function() {
+      console.log('resetting buffer maker');
+      this.makeBuffer = {
+        name: null,
+        user: null,
+      };
       this.chemicals = [];
       this.chemIndex = 0;
+      this.bufferData = [this.makeBuffer, this.chemicals];
     }
 
     this.updateName = function(name, amount, index) {
