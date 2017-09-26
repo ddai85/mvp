@@ -7,14 +7,25 @@ bufferApp.component('addChemical', {
   templateUrl: './templates/addChemical.html',
   controller: function () {
   	this.index;
-  	this.$onInit = function() {
-      this.index = this.chemIndex;
-  	}
     this.name = '';
     this.amount = '';
 
 	  this.valueChange = function() {
+      console.log(this.chemIndex)
 	    this.updateName(this.name, this.amount, this.index);
 	  }
+
+    this.$onInit = function() {
+      this.index = this.chemIndex;
+
+      $( function() {
+        $( "input.chemical" ).autocomplete({
+          source: msdsArr,
+          delay: 0,
+          minLength: 3
+
+        });
+      });
+    }
   }
 })

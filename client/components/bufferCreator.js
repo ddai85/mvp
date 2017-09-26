@@ -17,7 +17,11 @@ bufferApp.component('bufferCreator', {
 
     //needs a function to listen for click
     this.onClick = function() {
-      console.log(this.bufferData);
+      if (this.makeBuffer.name === null || this.makeBuffer.user === null) {
+        console.log('cannot leave buffer name and user empty');
+        return;
+      }
+
       $http({
       	method: 'POST',
       	url: 'http://127.0.0.1:3000/makebuffer',
@@ -54,6 +58,7 @@ bufferApp.component('bufferCreator', {
     }
 
     this.updateName = function(name, amount, index) {
+      console.log(name, amount, index)
       this.chemicals[index - 1].name = name;
       this.chemicals[index - 1].amount = amount;
     };
