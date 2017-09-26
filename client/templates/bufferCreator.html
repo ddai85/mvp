@@ -5,19 +5,10 @@
     <br>
     <label>Scientist Name</label>
     <input id="user-name" ng-model="$ctrl.makeBuffer.user" type="text" required>
-    <br>
-    <label>Chemical #1</label>
-    <input id="comp1" ng-model="$ctrl.makeBuffer.chem1" type="text" required>
-    <br>
-    <label>Amount of Chemical #1</label>
-    <input id="comp1-amt" ng-model="$ctrl.makeBuffer.chem1Amt" type="text" required>
-    <br>
-    <label>Chemical #2</label>
-    <input id="comp2" ng-model="$ctrl.makeBuffer.chem2" type="text" required>
-    <br>
-    <label>Amount of Chemical #2</label>
-    <input id="comp2-amt" ng-model="$ctrl.makeBuffer.chem2Amt" type="text" required>
+    <add-chemical chemical="chemical" ng-repeat="chemical in $ctrl.chemicals"></add-chemical>
     <br>
     <button id="submit" ng-click="$ctrl.onClick()">Submit</button>
+    <button id="reset" ng-click="$ctrl.onReset()">Reset</button>
+    <img ng-click="$ctrl.addRow()" id="addButton" src="../assets/add.png">
   </form>
 </div>

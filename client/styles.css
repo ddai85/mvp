@@ -34,3 +34,8 @@ h1 {
   display: inline;
   margin-right: 50px;
 }
+#addButton {
+	width: 7%;
+	float: right;
+	cursor: pointer;
+}

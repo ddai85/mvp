@@ -8,11 +8,12 @@ bufferApp.component('bufferCreator', {
 		this.makeBuffer = {
       name: null,
       user: null,
-      chem1: null,
-      chem1Amt: null,
-      chem2: null,
-      chem2Amt: null
 		}
+
+    this.chemicals = [];
+    this.chemIndex = 0;
+
+    this.bufferData = [this.makeBuffer, this.chemicals];
 
     //needs a function to listen for click
     this.onClick = function() {
@@ -20,7 +21,7 @@ bufferApp.component('bufferCreator', {
       $http({
       	method: 'POST',
       	url: 'http://127.0.0.1:3000/makebuffer',
-      	data: this.makeBuffer
+      	data: this.bufferData;
       })
       .then((success)=>{
       	console.log('post succeeded', success)
@@ -39,5 +40,18 @@ bufferApp.component('bufferCreator', {
     //upon click a post request to /buffer is sent to server
     }
 
+    this.addRow = function() {
+
+      let chemObj = {
+        name: null,
+        amount: null
+      }
+      this.chemicals.push(chemObj);
+    }
+
+    this.onReset = function() {
+      this.chemicals = [];
+      this.chemIndex = 0;
+    }
 	}
 });
